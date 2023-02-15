@@ -6,3 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+bevy = "0.9.1"
+bevy_mod_scripting = { version = "0.2.2", features = ["lua54"] }
+bevy_rapier3d = "0.20.0"
+big-brain = "0.16.0"
+pathfinding = "4.2.1"
