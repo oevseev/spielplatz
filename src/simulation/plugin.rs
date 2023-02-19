@@ -1,6 +1,12 @@
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
 
+use crate::simulation::systems::run_when_physics_pending;
+
+#[derive(StageLabel)]
+enum SimulationStages {
+    StepSimulation
+}
 pub struct SimulationPlugin {
     pub dt: f32,
 }
@@ -18,5 +24,14 @@ impl Plugin for SimulationPlugin {
                 substeps: 1,
             };
         }
+
+        app.add_stage_after(
+            CoreStage::Update,
+            SimulationStages::StepSimulation,
+            SystemStage::parallel().with_system_set(
+                SystemSet::new()
+                    .with_run_criteria(run_when_physics_pending)
+            )
+        );
     }
 }
