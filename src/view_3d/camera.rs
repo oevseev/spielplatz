@@ -5,7 +5,7 @@ const CAMERA_ROTATION_SPEED: f32 = 0.005;
 
 #[derive(Default, Resource)]
 pub struct CameraState {
-    direction: Vec2,
+    pub direction: Vec2,
 }
 
 pub fn move_camera(
